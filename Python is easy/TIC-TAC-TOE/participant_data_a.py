@@ -1,4 +1,4 @@
-Participant_number = 2
+Participant_number = 5
 Participant_data = []
 Registered_participant = 0
 output_file = open("participant_data.txt", "w") #Creating a file to write the output of the participant data
