@@ -16,6 +16,9 @@ def row_counter():
                 move_row = row
             #print(row,end="")
             return row
-      
+
+
+for r in range(3):
+    print(r)
         
         

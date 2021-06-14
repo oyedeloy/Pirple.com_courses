@@ -35,6 +35,11 @@ def draw_board(field):
 
 #draw_board()
 
+#Defining winning fomular
+
+
+    
+
 #Transposing into list data structure
 
 #There are 2 players and we need to check whose turn it is.
@@ -57,8 +62,15 @@ row_dict ={0:5, 1:5, 2:5, 3:5, 4:5, 5:5, 6:5} #each element in this dict corresp
                                               #At the start of the game, each column has 0 pieces
                                               #Row started from 5 to make sure that the board is printed from bottom up
                                               #This dictionary is used to feed values into the move row variable whenever a layer specifies a column
-         
-while True:
+
+
+
+
+            
+        
+
+Game_over = False         
+while not Game_over:
     
     print("Players turn: ", player)
     move_column  = int(input("Please enter a column\n\n"))
@@ -70,6 +82,11 @@ while True:
         #make move for player 1
         if CurrentField[move_column][move_row] == " ":
             CurrentField[move_column][move_row] = "x"
+        for c in range(4):
+            for r in range(6):
+                  if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c+1][r] == CurrentField[move_column][move_row] and CurrentField[c+2][r] == CurrentField[move_column][move_row] and CurrentField[c+3][r] == CurrentField[move_column][move_row]:
+                    Game_over = True
+                    print(f"player {player} " + "win" + "\n")
         
             
         #after player 1 moves, its player 2 turn to move
