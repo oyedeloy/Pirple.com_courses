@@ -98,7 +98,16 @@ while not Game_over:
                    
                     player = 1
                     Game_over = True
-                    print(f"player {player} " + "wins Congrats " + "\n")            
+                    print(f"player {player} " + "wins Congrats " + "\n")   
+                    
+        #Check for negative diagonal win
+        for c in range(4):
+            for r in range(3):
+                  if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c+1][r+1] == CurrentField[move_column][move_row] and CurrentField[c+2][r+2] == CurrentField[move_column][move_row] and CurrentField[c+3][r+3] == CurrentField[move_column][move_row]:
+                   
+                    player = 1
+                    Game_over = True
+                    print(f"player {player} " + "wins Congrats " + "\n")         
         
             
         #after player 1 moves, its player 2 turn to move
