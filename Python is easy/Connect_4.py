@@ -82,18 +82,23 @@ while not Game_over:
         #make move for player 1
         if CurrentField[move_column][move_row] == " ":
             CurrentField[move_column][move_row] = "x"
+            
+        #Check for horizontal win
         for c in range(4):
             for r in range(6):
                   if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c+1][r] == CurrentField[move_column][move_row] and CurrentField[c+2][r] == CurrentField[move_column][move_row] and CurrentField[c+3][r] == CurrentField[move_column][move_row]:
+                    player = 1
                     Game_over = True
-                    print(f"player {player} " + "win" + "\n")
-        
+                    print(f"player {player} " + "wins Congrats " + "\n")
+        #Check for vertical win
         
         for c in range(7):
             for r in range(3):
                   if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c][r+1] == CurrentField[move_column][move_row] and CurrentField[c][r+2] == CurrentField[move_column][move_row] and CurrentField[c][r+3] == CurrentField[move_column][move_row]:
+                   
+                    player = 1
                     Game_over = True
-                    print(f"player {player} " + "win" + "\n")            
+                    print(f"player {player} " + "wins Congrats " + "\n")            
         
             
         #after player 1 moves, its player 2 turn to move
@@ -105,6 +110,22 @@ while not Game_over:
         #make move for player 2
         if CurrentField[move_column][move_row] == " ":
             CurrentField[move_column][move_row] = "o"
+        
+        #Check for horizontal win
+        for c in range(4):
+            for r in range(6):
+                  if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c+1][r] == CurrentField[move_column][move_row] and CurrentField[c+2][r] == CurrentField[move_column][move_row] and CurrentField[c+3][r] == CurrentField[move_column][move_row]:
+                    player = 2
+                    Game_over = True
+                    print(f"player {player} " + "wins Congrats " + "\n")
+        #Check for vertical win
+        
+        for c in range(7):
+            for r in range(3):
+                  if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c][r+1] == CurrentField[move_column][move_row] and CurrentField[c][r+2] == CurrentField[move_column][move_row] and CurrentField[c][r+3] == CurrentField[move_column][move_row]:
+                    player = 2
+                    Game_over = True
+                    print(f"player {player} " + "wins Congrats " + "\n")
         
                 
         #after player 2 moves, its player 1 turn to move
