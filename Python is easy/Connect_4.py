@@ -88,6 +88,13 @@ while not Game_over:
                     Game_over = True
                     print(f"player {player} " + "win" + "\n")
         
+        
+        for c in range(7):
+            for r in range(3):
+                  if CurrentField[c][r] == CurrentField[move_column][move_row] and CurrentField[c][r+1] == CurrentField[move_column][move_row] and CurrentField[c][r+2] == CurrentField[move_column][move_row] and CurrentField[c][r+3] == CurrentField[move_column][move_row]:
+                    Game_over = True
+                    print(f"player {player} " + "win" + "\n")            
+        
             
         #after player 1 moves, its player 2 turn to move
         player = 2    
