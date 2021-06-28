@@ -63,12 +63,22 @@ class Cars(Vehicle):
     
 #CREATING THE "PLANE" CLASS
 
-class planes(Vehicle):
-    def __init__(self,Make,Model,Year,Weight,NeedsMaintenance=False,TripsSinceMaintenance=0): #The "planes" class will inherit all the attributes of the "Vehicle" class.
+class Planes(Vehicle):
+    def __init__(self,Make,Model,Year,Weight,NeedsMaintenance=False,TripsSinceMaintenance=0): #The "Planes" class will inherit all the attributes of the "Vehicle" class.
         Vehicle.__init__(self,Make,Model,Year,Weight,NeedsMaintenance,TripsSinceMaintenance)
-    def Fly(self):  #Calling this method means the plane will be flown.
-        is_driving = True
-    def Land(self,mileage):   #calling this method means you flew the plane and you landed.
+    def Fly(self):  #Calling this method means the Plane will be flown.
+        flying = True
+    def Land(self,flown):   #calling this method means you flew the plane and landed
+        self.flown = flown
+        flying = False #This method increments the mileage everytime the Plane
+        self.TripsSinceMaintenance += int(self.flown)
+        if self.TripsSinceMaintenance > 1000: #Once the TripMaintenance counter exceeds 100,
+            self.NeedsMaintenance = True
+    def __str__(self,):        
+        return (self.Make + " " +  self.Model + " " + str(self.Year) + " Model," + " it weighs " + str(self.Weight) + " lbs, ")
+        
+            
+
         
     
 
@@ -78,6 +88,12 @@ class planes(Vehicle):
 car_1 = Cars("Toyota","Corolla",2015,2000)
 car_2 = Cars("Honda","Accord",2018,1950)
 car_3 = Cars("Ford","Escape",2018,2500)
+
+
+#CREATING THE PLANE
+
+Plane_1 = Planes("Boeing","737_Max", 2020,25000)
+
 
 #Driving car_1 three times @40miles each
 car_1.Drive() 
@@ -105,9 +121,20 @@ car_3.Stop(35) #Car_3_Trip_2
 car_3.Drive() 
 car_3.Stop(35) #Car_3_Trip_3
 
+#FLY THE PLANE TO EXCEED MAINTENANCE LIMIT
+
+Plane_1.Fly()
+Plane_1.Land(50)
+Plane_1.Fly()
+Plane_1.Land(500)
+Plane_1.Fly()
+Plane_1.Land(500)
+
+
 car_1_trip = car_1.trip_since_maintenance() 
 car_2_trip = car_2.trip_since_maintenance() 
-car_3_trip = car_3.trip_since_maintenance()    
+car_3_trip = car_3.trip_since_maintenance() 
+Plane_1_trip = Plane_1.trip_since_maintenance()   
 
 
 print("---------------------CAR1 INFORMATION---------------------\n")
@@ -119,6 +146,15 @@ car_2_status = car_2.get_need_maintenance()
 print("\n---------------------CAR3 INFORMATION---------------------\n")
 print("Car_3 is a " + str(car_3) + "\nit's been driven " + str(car_3_trip) + " miles")
 car_3_status = car_3.get_need_maintenance()
+
+
+print("\n---------------------PLANE1 INFORMATION---------------------\n")
+print("Plane_1 is a " + str(Plane_1) + "\nit's been flown " + str(Plane_1_trip) + " miles")
+Plane_1_status = Plane_1.get_need_maintenance()
+
+
+
+
 
    
 
